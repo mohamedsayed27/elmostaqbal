@@ -6,8 +6,11 @@ import 'package:elmostaqbal_task/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'core/utils/observer.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
   Widget? widget;
   bool? onBoarding = CacheHelper.getData(key: 'onBoarding');

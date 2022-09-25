@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../data/models/shared_model.dart';
 
@@ -12,23 +13,27 @@ class OnlineCoursesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return SizedBox(
-      height: size.height/3.68,
-      width: size.height/2.944,
+      height: size.height / 3.68,
+      width: size.height / 2.944,
       child: Card(
         elevation: 3,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
-      ),
+        ),
         child: Column(
           children: [
-            Expanded(flex:3,child: Padding(
-              padding: EdgeInsets.only(top: size.height/61.33),
-              child: Image.asset(departmentItemModel.image,),
-            )),
+            Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: EdgeInsets.only(top: size.height / 61.33),
+                  child: Image.asset(
+                    departmentItemModel.image,
+                  ),
+                )),
             Expanded(
               flex: 1,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.height/73.4),
+                padding: EdgeInsets.symmetric(horizontal: size.height / 73.4),
                 child: Column(
                   children: [
                     Row(
@@ -38,11 +43,13 @@ class OnlineCoursesWidget extends StatelessWidget {
                           departmentItemModel.label,
                           style: TextStyle(
                               fontFamily: 'Din',
-                              fontSize: size.height/49.06,
+                              fontSize: size.height / 49.06,
                               color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
-                        Icon(Icons.bookmark_outlined,color: const Color(0xff2144D4),size:size.height/33)
+                        Icon(Icons.bookmark_outlined,
+                            color: const Color(0xff2144D4),
+                            size: size.height / 33)
                       ],
                     ),
                     Row(
@@ -50,14 +57,26 @@ class OnlineCoursesWidget extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Image.asset('assets/images/vuesax-linear-clock.png',height: size.height/46,width: size.height/46,),
-                             Text('  16 ساعه',style: TextStyle(fontSize: size.height/56.615),)
+                            Image.asset(
+                              'assets/images/vuesax-linear-clock.png',
+                              height: size.height / 46,
+                              width: size.height / 46,
+                            ),
+                            Text(
+                              '  16 ساعه',
+                              style: TextStyle(fontSize: size.height / 56.615),
+                            )
                           ],
                         ),
                         Row(
-                          children:  [
-                            Icon(Icons.pages_outlined,size: size.height/40.888,),
-                            Text(' 14 حصه',style: TextStyle(fontSize: size.height/56.615))
+                          children: [
+                            Icon(
+                              Icons.pages_outlined,
+                              size: size.height / 40.888,
+                            ),
+                            Text(' 14 حصه',
+                                style:
+                                    TextStyle(fontSize: size.height / 56.615))
                           ],
                         )
                       ],
@@ -70,5 +89,25 @@ class OnlineCoursesWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class OnlineCoursesShimmer extends StatelessWidget {
+  const OnlineCoursesShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    return Shimmer.fromColors(
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.grey[100]!,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Container(
+            height: size.height / 3.68,
+            width: size.height / 2.944,
+            color: Colors.white,
+          ),
+        ));
   }
 }
